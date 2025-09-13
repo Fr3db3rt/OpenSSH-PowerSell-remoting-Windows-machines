@@ -31,9 +31,9 @@ InstallSize  : 4947215
 **Hint:**
 - If there is an error, like
 
-Access denied
-    + CategoryInfo          : NotSpecified: (:) [Add-WindowsCapability], COMException
-    + FullyQualifiedErrorId : Microsoft.Dism.Commands.AddWindowsCapabilityCommand
+- Access denied
+  + CategoryInfo          : NotSpecified: (:) [Add-WindowsCapability], COMException
+  + FullyQualifiedErrorId : Microsoft.Dism.Commands.AddWindowsCapabilityCommand
 
 Try again to remote connect with PSExec64.exe using elevation -h and system credentials -s, like ...
 ```powershell
