@@ -28,9 +28,9 @@ Description  : OpenSSH-basierter Secure Shell (SSH)-Server für die sichere Schl
 DownloadSize : 1290075
 InstallSize  : 4947215
 ```
-
 **Hint:**
 - If there is an error, like
+
 Access denied
     + CategoryInfo          : NotSpecified: (:) [Add-WindowsCapability], COMException
     + FullyQualifiedErrorId : Microsoft.Dism.Commands.AddWindowsCapabilityCommand
