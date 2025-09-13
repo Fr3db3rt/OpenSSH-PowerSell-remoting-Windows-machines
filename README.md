@@ -73,6 +73,7 @@ Set-Service -Name sshd -StartupType 'Automatic'
 ```
 Optionally allow the firewall rule: 
 `New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22`
+
 ---
 
 ## 🔹 2. Test SSH login
