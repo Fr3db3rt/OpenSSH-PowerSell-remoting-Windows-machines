@@ -11,6 +11,7 @@ On **Windows 10/11** or **Server 2019+**:
 
 ```powershell
 # Run in an elevated PowerShell prompt
+Get-WindowsCapability -Online
 Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
 ```
 
