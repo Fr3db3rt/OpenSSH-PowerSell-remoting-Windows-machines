@@ -1,7 +1,7 @@
 # OpenSSH-PowerSell-remoting-Windows-machines
 OpenSSH+PowerSell remoing Windows machines
 
-Perfect, let’s go step by step. We’ll set up **SSH + PowerShell remoting** so you can manage Windows machines remotely via command line.
+- Step by step set up to **SSH** and **PowerShell remoting** to manage Windows machines remotely.
 
 ---
 
@@ -11,14 +11,65 @@ On **Windows 10/11** or **Server 2019+**:
 
 ```powershell
 # Run in an elevated PowerShell prompt
-Get-WindowsCapability -Online
+# List ...
+Get-WindowsCapability -Online | Where({ $_.Name -like 'openssh*' }) | ft
+# shows, for example
+Name                           State
+----                           -----
+OpenSSH.Client~~~~0.0.1.0  Installed
+OpenSSH.Server~~~~0.0.1.0 NotPresent
+
+# add new
 Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+# should result in
+Name         : OpenSSH.Server~~~~0.0.1.0
+State        : Installed
+DisplayName  : OpenSSH-Server
+Description  : OpenSSH-basierter Secure Shell (SSH)-Server für die sichere Schlüsselverwaltung und für den Zugriff auf
+               Remotecomputer
+DownloadSize : 1290075
+InstallSize  : 4947215
+```
+
+**Hint:**
+- If there is an error, like
+  Access denied
+    + CategoryInfo          : NotSpecified: (:) [Add-WindowsCapability], COMException
+    + FullyQualifiedErrorId : Microsoft.Dism.Commands.AddWindowsCapabilityCommand
+Try again to remote connect with PSExec64.exe using elevation -h and system credentials -s, like ...
+```powershell
+PsExec64.exe \\Remote-Computer-Name -h -s powershell -noexit -command "whoami"
+
+# a check should now reveal elevated System-Account rights ...
+PS C:\WINDOWS\system32>whoami
+nt-autorität\system
+
+# adding OpenSSH.Server should now work
+PS C:\WINDOWS\system32> Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+...
+Path          :
+Online        : True
+RestartNeeded : False
+
+PS C:\WINDOWS\system32> Get-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+Name         : OpenSSH.Server~~~~0.0.1.0
+State        : Installed
+DisplayName  : OpenSSH-Server
+Description  : OpenSSH-basierter Secure Shell (SSH)-Server für die sichere Schlüsselverwaltung und für den Zugriff auf
+               Remotecomputer
+DownloadSize : 1290075
+InstallSize  : 4947215
 ```
 
 Then start and enable the service:
-
 ```powershell
 Start-Service sshd
+
+Get-Service sshd
+Status   Name               DisplayName
+------   ----               -----------
+Running  sshd               OpenSSH SSH Server
+
 Set-Service -Name sshd -StartupType 'Automatic'
 ```
 
