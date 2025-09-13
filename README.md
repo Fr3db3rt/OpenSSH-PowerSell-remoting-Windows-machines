@@ -1,5 +1,5 @@
 # OpenSSH-PowerShell-remoting-Windows-machines
-OpenSSH+PowerSell remoing Windows machines
+OpenSSH+PowerShell remoting Windows machines
 
 - Step by step set up to **SSH** and **PowerShell remoting** to manage Windows machines remotely.
 
@@ -33,9 +33,10 @@ InstallSize  : 4947215
 
 **Hint:**
 - If there is an error, like
-  Access denied
+Access denied
     + CategoryInfo          : NotSpecified: (:) [Add-WindowsCapability], COMException
     + FullyQualifiedErrorId : Microsoft.Dism.Commands.AddWindowsCapabilityCommand
+
 Try again to remote connect with PSExec64.exe using elevation -h and system credentials -s, like ...
 ```powershell
 PsExec64.exe \\Remote-Computer-Name -h -s powershell -noexit -command "whoami"
