@@ -1,10 +1,9 @@
 # OpenSSH-PowerShell-remoting-Windows-machines
-OpenSSH+PowerShell remoting Windows machines
+#### OpenSSH+PowerShell remoting Windows machines
 
-Step by step set up to **SSH** and **PowerShell remoting** to manage Windows machines remotely.
+## Step by step set up to **SSH** and **PowerShell remoting** to manage Windows machines remotely.
 ---
-
-## 🔹 1. Install OpenSSH Server on the remote Windows machine
+🔹 1. Install OpenSSH Server on the remote Windows machine
 
 On **Windows 10/11** or **Server 2019+**:
 
