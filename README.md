@@ -1,4 +1,4 @@
-# OpenSSH-PowerSell-remoting-Windows-machines
+# OpenSSH-PowerShell-remoting-Windows-machines
 OpenSSH+PowerSell remoing Windows machines
 
 - Step by step set up to **SSH** and **PowerShell remoting** to manage Windows machines remotely.
