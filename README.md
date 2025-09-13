@@ -10,7 +10,7 @@ On **Windows 10/11** or **Server 2019+**:
 ```powershell
 # Run in an elevated PowerShell prompt
 # List ...
-Get-WindowsCapability -Online | Where({ $_.Name -like 'openssh*' }) | ft
+Get-WindowsCapability -Online | Where-Object Name -like 'openssh*' }) | ft
 # shows, for example
 Name                           State
 ----                           -----
